@@ -1,0 +1,38 @@
+<!DOCTYPE HTML>
+<html>
+    <head>
+        <meta charset="utf-8" />
+        <title>Multi-color stroboscope</title>
+        <link rel="stylesheet" type="text/css" media="screen" href="main.css" />
+    </head>
+    <body id="corps">
+        <div id="bouton" onmouseover="fuite()">
+                <button onclick="stop()">Stop</button>
+        </div>
+        <script>
+                var couleurs = ["red","blue","green","pink","yellow","orange","white","black","purple"];
+                var aleatoire;
+                var timer;
+                var i;
+                function Random(max){
+                    return Math.floor(Math.random() * Math.floor(max));
+                }
+                function start(){
+                    i = Random(9);
+                    document.getElementById("corps").style.backgroundColor=couleurs[i];
+                    stop()
+                    timer = setTimeout(start,10);
+                }
+                function stop(){
+                    clearTimeout(timer);
+                }
+                function fuite() {
+                    aleatoire = Random(100)
+                    bouton.style.top = aleatoire + "%";
+                    aleatoire = Random(100)
+                    bouton.style.left = aleatoire + "%";
+                }
+                start()
+            </script>
+    </body>
+</html>
